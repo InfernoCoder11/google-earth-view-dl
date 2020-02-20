@@ -22,7 +22,7 @@ class earth():
         self.next_link = soup.find("a", {"class": "button intro__explore"})["href"]
     
     def download(self, link):
-        if (link + ".jpg") not in os.listdir():
+        if (link + ".jpg") not in os.listdir(self.newpath):
             url = "https://www.gstatic.com/prettyearth/assets/full/" + link.split("-")[-1] + ".jpg"
             r = requests.get(url, allow_redirects=True)
             open(self.newpath + link + ".jpg", 'wb').write(r.content)
